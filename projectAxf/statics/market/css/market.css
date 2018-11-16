@@ -1,0 +1,120 @@
+#marketDiv{
+    width: 100%;
+    height: 100%;
+    padding: 1.6rem 0;
+    position:fixed;
+}
+#leftDiv {
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#leftDiv ul li {
+    text-align: center;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    font-size: 0.48rem;
+    border-bottom: solid 1px #e0e0e0;
+}
+#leftDiv ul li a {
+    color: #333333;
+}
+/*创建一个yellow类*/
+.yellow {
+    width: 0.2rem;
+    background-color: #ffd600;
+    display: block;
+    float: left;
+    height: 100%;
+}
+#rightDiv{
+    background-color: #ffffff;
+    height: 100%;
+    padding: 0;
+
+}
+#topDiv{
+    height: 1.3rem;
+    line-height: 1.3rem;
+    width: 100%;
+    font-size: 0.5rem;
+    border-bottom: solid 1px #e0e0e0;
+}
+#topDiv div{
+    padding: 0;
+    margin: 0;
+}
+#typeBtn span, #sortBtn span{
+    padding-left: 0.2rem;
+}
+#bottomDiv{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 1.3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#bottomDiv ul{
+    margin: 0;
+}
+#bottomDiv ul li{
+    height: 3rem;
+    border-bottom: solid 1px #e0e0e0;
+}
+#liLeftDiv {
+    float: left;
+    width: 40%;
+    height: 100%;
+}
+#liLeftDiv img{
+    padding: 0.15rem 0;
+    width: 100%;
+    height: 100%;
+}
+#liRightDiv{
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+#liRightDiv h5{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: black;
+    padding-top: 0.2rem;
+}
+#liRightDiv p:last-child{
+    color: red;
+}
+#liRightDiv p s{
+    color: #999999;
+}
+/*实现固定定位*/
+#typeDiv, #sortDiv{
+    position: fixed;
+    top:3rem;
+    width:75%;
+    right:0;
+    height:100%;
+    /*有透明度的背景*/
+    background: rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+    /*默认不显示*/
+    display: none;
+}
+#typeDiv>div, #sortDiv>div{
+    background:white;
+    padding-bottom:0.2rem;
+}
+#typeDiv span,#sortDiv span{
+    border: 1px solid #e0e0e0;
+    padding: 0.1rem 0.2rem;
+    font-size: 0.4rem;
+    display: inline-block;
+    margin: 0.2rem 0 0 0.2rem;
+    color: #777777;
+}
+.typeSortBackground{
+    background-color: #FFF9D9;
+}

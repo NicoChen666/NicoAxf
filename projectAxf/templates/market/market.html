@@ -1,0 +1,79 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}超市{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'market/css/market.css' %}"/>
+{% endblock link %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'market/js/market.js' %}"></script>
+{% endblock script %}
+
+{% block main %}
+    <div id="marketDiv">
+        <div class="col-xs-3" id="leftDiv">
+            <ul>
+{#              展示左侧组表的信息 item#}
+                {% for item in categories %}
+                    <li>
+{#                      将每个组元素的id赋个块的id#}
+                        <span id="yellow{{ item.id }}"></span>
+{#                      通过点击组表元素,展示组表相应的商品信息  外键组表id#}
+                        <a href="/market/{{ item.id }}/0/0/">{{ item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-xs-9" id="rightDiv">
+            <div class="container-fluid" id="topDiv">
+                <div id="typeBtn" class="col-xs-6"><span >全部分类<span class="glyphicon glyphicon-chevron-down"></span></span></div>
+                <div id="sortBtn" class="col-xs-6"><span>综合排序<span class="glyphicon glyphicon-chevron-down"></span></span></div>
+            </div>
+            <div id="bottomDiv">
+                <ul>
+                    {% for product in products %}
+                        <li>
+                            <a href="#" >
+                                <div id="liLeftDiv">
+                                    <img src={{ product.img }}>
+                                </div>
+                                <div id="liRightDiv">
+                                    <h5>{{ product.name }}</h5>
+                                    <p>{{ product.specifics }}</p>
+                                    <p>
+                                        <span>{{ product.price }}</span>
+                                        <span>&nbsp;&nbsp;</span>
+                                        {% if product.price < product.marketPrice %}
+                                            <s>{{ product.marketPrice }}</s>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+{#              全部分类下拉显示#}
+                <div id="typeDiv">
+                    <div>
+{#                        gid 由<a href="/market/{{ item.id }}的item.id 传给url 再传给views的gid,传到此处#}
+                        <a href="/market/{{ gid }}/0/0/"><span id="type0">全部分类</span></a>
+                        {% for child in childs  %}
+                            <a href="/market/{{ gid }}/{{ child.id }}/0/"><span id="type{{ child.id }}">{{ child.name }}</span></a>
+                        {% endfor %}
+                    </div>
+                </div>
+{#              综合排序下拉显示#}
+                <div id="sortDiv">
+                    <div>
+                    <a href="/market/{{ gid }}/{{ cid }}/0/"><span id="sort0">综合排序</span></a>
+                    <a href="/market/{{ gid }}/{{ cid }}/1/"><span id="sort1">销量排序</span></a>
+                    <a href="/market/{{ gid }}/{{ cid }}/2/"><span id="sort2">价格最低</span></a>
+                    <a href="/market/{{ gid }}/{{ cid }}/3/"><span id="sort3">价格最高</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}
