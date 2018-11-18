@@ -58,7 +58,25 @@ class Child(models.Model):
     class Meta:
         db_table = "childs"
 
+
+# 用户表
 class AxfUser(models.Model):
+    objects = AxfManager()
+    phone = models.CharField(max_length=20, primary_key=True)
+    token = models.CharField(max_length=100)
+    img = models.CharField(max_length=500, null=True)
+    isDelete = models.BooleanField(default=False)
+    cartNum = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = "axfusers"
+
+    @classmethod
+    def create(cls, phone, token, img):
+        return cls(phone=phone, token=token, img=img)
+
+
+
     pass
 
 class Cart(models.Model):

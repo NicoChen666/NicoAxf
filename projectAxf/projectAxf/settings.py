@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axf.middleWares.verifyCodeMiddleware.VerifyCodeMiddleware',
+    'axf.middleWares.loginMiddleware.LoginMiddleware',
 ]
 
 ROOT_URLCONF = 'projectAxf.urls'
@@ -133,7 +135,7 @@ CACHES = {
     'default': {
         'BACKEND': 'redis_cache.cache.RedisCache',
         'LOCATION': 'www.darlingmeng.top:6379',
-        'TIMEOUT': 60,
+        'TIMEOUT': 60*60*24,
         'OPTIONS': {
             'PASSWORD': 'cnf6553900',
             # 'CLIENT_CLASS': 'redis_cache.client.DefaultClient'
@@ -145,5 +147,5 @@ import djcelery
 djcelery.setup_loader()
 BROKER_URL = "redis://:cnf6553900@www.darlingmeng.top:6379/0"
 CELERY_IMPORTS = "axf.task"
-# 上传
+# 上传文件
 MEDIA_ROOT = os.path.join(BASE_DIR, "statics/media")
